@@ -1,6 +1,5 @@
 ﻿using System;
 
-// Завдання 2
 class Shop : IDisposable
 {
     public string Name { get; set; }
@@ -23,13 +22,18 @@ class Shop : IDisposable
     {
         Console.WriteLine($"Магазин {Name} закрито");
     }
+
+    ~Shop()
+    {
+        Console.WriteLine($"Магазин {Name} знищено");
+    }
 }
 
 class Program
 {
     static void Main()
     {
-        // Тестування класу "Магазин"
+        // Тестування класу "Магазин" з деструктором
         using (Shop shop = new Shop("Продукти24", "вул. Центральна, 10", "Продовольчий"))
         {
             shop.ShowInfo();
